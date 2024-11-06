@@ -1,0 +1,67 @@
+//6-11-2024
+#include <iostream>
+using namespace std;
+
+class Base {
+private:
+    int privateVar = 1;
+protected:
+    int protVar = 2;
+public:
+    int pubVar = 3;
+
+    void showBase() {
+        cout << "Showing base class:" << endl;
+        cout << "privateVar: " << privateVar << endl;
+        cout << "protVar: " << protVar << endl;
+        cout << "pubVar: " << pubVar << endl;
+    }
+};
+
+class PubDer : public Base {
+public:
+    void showPubDer() {
+        cout << "Inside showPubDer:" << endl;
+       // cout << "privateVar: " << privateVar << endl; 
+        cout << "protVar: " << protVar << endl;
+        cout << "pubVar: " << pubVar << endl; 
+    }
+};
+
+class ProtDer : protected Base  {
+public:
+    void showProtDer() {
+        cout << "Inside showProtDer:" << endl;
+        //cout << "privateVar: " << privateVar << endl;
+        cout << "protVar: " << protVar << endl; 
+        cout << "pubVar: " << pubVar << endl; 
+    }
+};
+
+class PrivDer : private Base {
+public:
+    void showPrivDer() {
+        cout << "Inside showPrivDer:" << endl;
+       // cout << "privateVar: " << privateVar << endl; 
+        cout << "protVar: " << protVar << endl; 
+        cout << "pubVar: " << pubVar << endl; 
+    }
+};
+
+int main() {
+    Base baseObj;
+    baseObj.showBase();
+
+    PubDer pubDerObj;
+    pubDerObj.showPubDer();
+
+    ProtDer protDerObj;
+    protDerObj.showProtDer();
+
+    PrivDer privDerObj;
+    privDerObj.showPrivDer();
+
+    
+
+    return 0;
+}
